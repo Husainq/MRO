@@ -29,11 +29,13 @@
             android:layout_height="57dp"
             android:background="@drawable/border"
             android:hint="Email"
-            android:drawableLeft="@drawable/"
+            android:drawableLeft="@drawable/email"
             android:paddingLeft="15dp"
+            android:drawablePadding="7dp"
             android:inputType="text"
             android:fontFamily="@font/poppinsregular"
             android:textSize="13sp"
+            android:textColorHint="@color/teks"
             android:textColor="@color/SecondaryColor"
             />
 
@@ -43,15 +45,33 @@
             android:layout_height="57dp"
             android:background="@drawable/border"
             android:layout_marginTop="10dp"
+            android:textColorHint="@color/teks"
             android:inputType="textPassword"
             android:fontFamily="@font/poppinsregular"
             android:hint="Kata Sandi"
+            android:drawableLeft="@drawable/pass"
             android:paddingLeft="15dp"
+            android:drawablePadding="7dp"
             android:textSize="13sp"
             android:textColor="@color/SecondaryColor"
             />
 
+        <TextView
+            android:id="@+id/fp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ly1"
+            android:layout_alignRight="@id/edt_pass"
+            android:layout_marginTop="7dp"
+            android:fontFamily="@font/poppinsregular"
+            android:text="Lupa Password ?"
+            android:textColor="@color/PrimaryColor"
+            android:textSize="13sp"
+            android:layout_gravity="right"
+            />
     </LinearLayout>
+
+
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_login"
@@ -83,7 +103,7 @@
             android:text="Belum mempunyai akun? "
             android:fontFamily="@font/poppinsregular"
             android:textSize="12sp"
-            android:textColor="@color/SecondaryColor"
+            android:textColor="@color/teks"
             />
 
         <TextView
