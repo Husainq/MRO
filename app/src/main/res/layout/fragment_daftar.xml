@@ -93,22 +93,20 @@
     </LinearLayout>
 
 
-
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Daftar"
         android:layout_below="@id/ly1"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/kolom_biru"
-        android:width="300dp"
-        android:textColor="@color/white"
-        android:textSize="15sp"
         android:layout_marginTop="25dp"
+        android:width="300dp"
+        android:background="@drawable/kolom_biru"
         android:fontFamily="@font/poppinsbold"
+        android:text="Daftar"
         android:textAllCaps="false"
-        />
+        android:textColor="@color/white"
+        android:textSize="15sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
