@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">MRO</string>
     <string name="user">Ahmad</string>
+    <string name="deskripsi_splash">"Your Reliable Partner for Engineering, Procurement, &amp; Construction Projects"</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
