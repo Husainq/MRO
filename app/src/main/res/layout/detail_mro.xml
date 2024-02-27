@@ -31,7 +31,7 @@
                 android:id="@+id/ou_judul"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nama MRO"
+                android:text="@string/nama_mro"
                 android:layout_marginStart="12dp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppinsmedium"
