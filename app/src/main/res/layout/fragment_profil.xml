@@ -1,79 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_centerInParent="true"
+    android:gravity="center"
     android:background="@color/white"
     tools:context=".ProfilFragment">
 
-    <LinearLayout
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="296.5dp"
+        android:contentDescription="bg"
+        android:src="@drawable/untitled_design"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/title_profil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/poppinsmedium"
+        android:text="@string/profil"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="250dp"
+        android:layout_centerInParent="true">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="300dp"
-            android:background="@drawable/untitled_design"
-            android:orientation="vertical">
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="10dp"
+            app:cardUseCompatPadding="true"
+            app:cardCornerRAdius="5dp"
+            android:layout_marginTop="40dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Profile"
-                android:layout_marginTop="30dp"
-                android:textAlignment="center"
-                android:layout_gravity="center"
-                android:textSize="18sp"
-                android:textColor="@color/black"
-                android:fontFamily="@font/poppinsmedium"
-                />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
+                android:layout_height="match_parent"
+                android:layout_marginTop="23dp"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:src="@drawable/logo"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
+            </LinearLayout>
 
-                </ImageView>
+        </androidx.cardview.widget.CardView>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="300dp"
-                android:layout_height="120dp"
-                android:layout_gravity="center"
-                android:background="@drawable/kolom_putih">
+    <com.google.android.material.imageview.ShapeableImageView
+        android:layout_width="98dp"
+        android:layout_height="98dp"
+        android:src="@drawable/squid"
+        app:shapeAppearanceOverlay="@style/Circular"
+        android:elevation="15dp"
+        android:padding="5dp"
+        android:layout_centerHorizontal="true"
+        >
 
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="username"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                </TextView>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        </LinearLayout>
-
-    </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.imageview.ShapeableImageView>
+</RelativeLayout>
