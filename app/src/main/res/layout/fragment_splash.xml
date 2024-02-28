@@ -13,7 +13,8 @@
         android:layout_height="150dp"
         android:layout_centerHorizontal="true"
         android:layout_above="@id/deskripsi_splash"
-        android:src="@drawable/logo" />
+        android:src="@drawable/logo"
+        />
 
     <TextView
         android:id="@+id/deskripsi_splash"
@@ -21,13 +22,13 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_marginTop="25dp"
-
         android:paddingHorizontal="12dp"
         android:fontFamily="@font/poppinsmedium"
         android:text="@string/deskripsi_splash"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_splash"
@@ -60,4 +61,5 @@
         android:fontFamily="@font/poppinsbold"
         android:textAllCaps="false"
         />
+
 </RelativeLayout>
