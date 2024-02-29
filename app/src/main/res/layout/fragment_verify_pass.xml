@@ -80,7 +80,7 @@
         android:id="@+id/button_next"
         android:layout_width="360dp"
         android:layout_height="57dp"
-        android:text="Login"
+        android:text="Sign In"
         android:layout_centerHorizontal="true"
         android:background="@drawable/kolom_biru"
         android:width="300dp"
