@@ -6,65 +6,73 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_centerInParent="true"
     android:gravity="center"
-    android:background="@color/white"
     tools:context=".ProfilFragment">
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="296.5dp"
-        android:contentDescription="bg"
-        android:src="@drawable/untitled_design"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/title_profil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:fontFamily="@font/poppinsmedium"
-        android:text="@string/profil"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:layout_centerInParent="true">
+        android:layout_centerInParent="true"
+        >
 
         <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="240dp"
+            android:layout_width="370dp"
+            android:layout_centerInParent="true"
+            android:layout_height="170dp"
             app:cardCornerRadius="15dp"
             app:cardElevation="10dp"
             app:cardUseCompatPadding="true"
             app:cardCornerRAdius="5dp"
-            android:layout_marginTop="40dp">
-
+            android:layout_marginTop="25dp"
+            >
+            
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="23dp"
+                android:layout_marginTop="20dp"
                 android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/username_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="username"
+                    android:layout_marginTop="32dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppinsbold"
+                    android:textSize="22sp"
+                    android:gravity="center"
+                    >
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/role_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="ini role"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:textSize="12sp"
+                    android:gravity="center"
+                    >
+
+                </TextView>
 
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
     </RelativeLayout>
-
+    
     <com.google.android.material.imageview.ShapeableImageView
         android:layout_width="98dp"
         android:layout_height="98dp"
-        android:src="@drawable/squid"
+        android:src="@drawable/lumbalumba"
         app:shapeAppearanceOverlay="@style/Circular"
         android:elevation="15dp"
         android:padding="5dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
         >
 
     </com.google.android.material.imageview.ShapeableImageView>
