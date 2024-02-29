@@ -18,7 +18,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/back"
+            android:id="@+id/back_forgotpass"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/back"
@@ -35,7 +35,7 @@
             android:textSize="18sp"
             android:textColor="@color/black"
             android:layout_marginStart="10dp"
-            app:layout_constraintStart_toEndOf="@id/back"
+            app:layout_constraintStart_toEndOf="@id/back_forgotpass"
             app:layout_constraintTop_toTopOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -77,8 +77,8 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_next"
-        android:layout_width="360dp"
+        android:id="@+id/button_next_emailverif"
+        android:layout_width="350dp"
         android:layout_height="57dp"
         android:text="Sign In"
         android:layout_centerHorizontal="true"

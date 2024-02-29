@@ -18,7 +18,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/back"
+            android:id="@+id/back_forgotpass"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/back"
@@ -35,7 +35,7 @@
             android:textSize="18sp"
             android:textColor="@color/black"
             android:layout_marginStart="10dp"
-            app:layout_constraintStart_toEndOf="@id/back"
+            app:layout_constraintStart_toEndOf="@id/back_forgotpass"
             app:layout_constraintTop_toTopOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -76,8 +76,8 @@
         app:layout_constraintRight_toRightOf="parent"/>
 
     <EditText
-        android:id="@+id/edt_email"
-        android:layout_width="360dp"
+        android:id="@+id/edt_email_forgotpass"
+        android:layout_width="350dp"
         android:layout_height="57dp"
         android:background="@drawable/border"
         android:hint="@string/email"
@@ -96,8 +96,8 @@
         tools:ignore="RtlSymmetry,TextFields" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_next"
-        android:layout_width="360dp"
+        android:id="@+id/button_next_forgotpass"
+        android:layout_width="350dp"
         android:layout_height="57dp"
         android:text="Next"
         android:layout_centerHorizontal="true"
@@ -109,7 +109,7 @@
         android:fontFamily="@font/poppinsbold"
         android:textAllCaps="false"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edt_email"
+        app:layout_constraintTop_toBottomOf="@id/edt_email_forgotpass"
         app:layout_constraintLeft_toLeftOf="parent"
         />
 

@@ -24,8 +24,8 @@
         android:padding="30dp">
 
         <EditText
-            android:id="@+id/edt_email"
-            android:layout_width="match_parent"
+            android:id="@+id/edt_email_signup"
+            android:layout_width="350dp"
             android:layout_height="57dp"
             android:background="@drawable/border"
             android:hint="Email"
@@ -40,7 +40,7 @@
             />
 
         <EditText
-            android:id="@+id/edt_username"
+            android:id="@+id/edt_username_signup"
             android:layout_width="match_parent"
             android:layout_height="57dp"
             android:background="@drawable/border"
@@ -57,11 +57,11 @@
             />
 
         <EditText
-            android:id="@+id/edt_mobilenumber"
+            android:id="@+id/edt_phonenumber_signup"
             android:layout_width="match_parent"
             android:layout_height="57dp"
             android:background="@drawable/border"
-            android:hint="Mobile Number"
+            android:hint="Phone Number"
             android:layout_marginTop="10dp"
             android:drawableLeft="@drawable/phone"
             android:paddingLeft="15dp"
@@ -74,7 +74,7 @@
             />
 
         <EditText
-            android:id="@+id/edt_pass"
+            android:id="@+id/edt_password_signup"
             android:layout_width="match_parent"
             android:layout_height="57dp"
             android:background="@drawable/border"
@@ -95,9 +95,9 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/button_signup"
+        android:layout_width="350dp"
+        android:layout_height="57dp"
         android:text="Sign Up"
         android:layout_below="@id/ly1"
         android:layout_centerHorizontal="true"
@@ -115,7 +115,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="20dp"
-        android:layout_below="@id/button_login"
+        android:layout_below="@id/button_signup"
         android:gravity="center">
 
         <TextView
@@ -128,7 +128,7 @@
             />
 
         <TextView
-            android:id="@+id/txt_daftar"
+            android:id="@+id/txt_signin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sign In"

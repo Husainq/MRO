@@ -24,7 +24,7 @@
         android:padding="30dp">
 
         <EditText
-            android:id="@+id/edt_email"
+            android:id="@+id/edt_email_signin"
             android:layout_width="match_parent"
             android:layout_height="57dp"
             android:background="@drawable/border"
@@ -40,7 +40,7 @@
             />
 
         <EditText
-            android:id="@+id/edt_pass"
+            android:id="@+id/edt_pass_signin"
             android:layout_width="match_parent"
             android:layout_height="57dp"
             android:background="@drawable/border"
@@ -57,11 +57,11 @@
             />
 
         <TextView
-            android:id="@+id/fp"
+            android:id="@+id/forgotpass_signin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/ly1"
-            android:layout_alignRight="@id/edt_pass"
+            android:layout_alignRight="@id/edt_pass_signin"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/poppinsregular"
             android:text="Forgot Password ?"
@@ -71,12 +71,10 @@
             />
     </LinearLayout>
 
-
-
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/button_login_signin"
+        android:layout_width="350dp"
+        android:layout_height="57dp"
         android:text="Sign In"
         android:layout_below="@id/ly1"
         android:layout_centerHorizontal="true"
@@ -94,7 +92,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="20dp"
-        android:layout_below="@id/button_login"
+        android:layout_below="@id/button_login_signin"
         android:gravity="center">
 
         <TextView
@@ -107,7 +105,7 @@
             />
 
         <TextView
-            android:id="@+id/txt_daftar"
+            android:id="@+id/txt_daftar_signin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sign Up"

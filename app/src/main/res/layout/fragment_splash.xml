@@ -31,9 +31,9 @@
         />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_splash"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/button_splash_signin"
+        android:layout_width="350dp"
+        android:layout_height="57dp"
         android:text="Sign In"
         android:layout_below="@id/deskripsi_splash"
         android:layout_centerHorizontal="true"
@@ -47,11 +47,11 @@
         />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_splash2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/button_splash_signup"
+        android:layout_width="350dp"
+        android:layout_height="57dp"
         android:text="Sign Up"
-        android:layout_below="@id/button_splash"
+        android:layout_below="@id/button_splash_signin"
         android:layout_centerHorizontal="true"
         android:background="@drawable/kolom_putih"
         android:width="300dp"
