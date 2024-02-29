@@ -84,7 +84,7 @@
         android:drawableStart="@drawable/email"
         android:paddingStart="15dp"
         android:drawablePadding="7dp"
-        android:inputType="text"
+        android:inputType="textEmailAddress"
         android:fontFamily="@font/poppinsregular"
         android:textSize="13sp"
         android:layout_marginTop="40dp"
