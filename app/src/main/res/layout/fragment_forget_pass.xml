@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="340dp"
+        android:layout_marginTop="30dp"
+        android:id="@+id/header"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back"
+            android:contentDescription="@string/back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/forget"
+            android:fontFamily="@font/poppinssemibold"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:layout_marginStart="10dp"
+            app:layout_constraintStart_toEndOf="@id/back"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/gmbr_forget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/forget1"
+        app:layout_constraintTop_toBottomOf="@id/header"
+        android:layout_marginTop="40dp"
+        android:contentDescription="Hal1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/desc1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/gmbr_forget"
+        android:layout_marginTop="40dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textSize="18sp"
+        android:fontFamily="@font/poppinssemibold"
+        android:text="@string/forget1"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <TextView
+        android:id="@+id/desc2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/desc1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textSize="18sp"
+        android:fontFamily="@font/poppinssemibold"
+        android:text="@string/forget2"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <EditText
+        android:id="@+id/edt_email"
+        android:layout_width="360dp"
+        android:layout_height="57dp"
+        android:background="@drawable/border"
+        android:hint="@string/email"
+        android:drawableStart="@drawable/email"
+        android:paddingStart="15dp"
+        android:drawablePadding="7dp"
+        android:inputType="textEmailAddress"
+        android:fontFamily="@font/poppinsregular"
+        android:textSize="13sp"
+        android:layout_marginTop="40dp"
+        android:textColorHint="@color/teks"
+        android:textColor="@color/SecondaryColor"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/desc2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:ignore="RtlSymmetry,TextFields" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_next"
+        android:layout_width="360dp"
+        android:layout_height="57dp"
+        android:text="Next"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/kolom_biru"
+        android:width="300dp"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/poppinsbold"
+        android:textAllCaps="false"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edt_email"
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
