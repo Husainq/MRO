@@ -70,9 +70,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="25dp"
                     android:layout_gravity="center"
-                    android:fontFamily="@font/poppinssemibold"
+                    android:fontFamily="@font/poppinsmedium"
                     android:textColor="@color/black"
-                    android:textSize="16sp"
+                    android:textSize="17sp"
                     android:text="Edit Profile"/>
 
             </LinearLayout>
@@ -94,9 +94,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="25dp"
                     android:layout_gravity="center"
-                    android:fontFamily="@font/poppinssemibold"
+                    android:fontFamily="@font/poppinsmedium"
                     android:textColor="@color/black"
-                    android:textSize="16sp"
+                    android:textSize="17sp"
                     android:text="Reset Password"/>
 
             </LinearLayout>
@@ -119,9 +119,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="22dp"
                     android:layout_gravity="center"
-                    android:fontFamily="@font/poppinssemibold"
+                    android:fontFamily="@font/poppinsmedium"
                     android:textColor="@color/RedWarning"
-                    android:textSize="16sp"
+                    android:textSize="17sp"
                     android:text="Logout"/>
 
             </LinearLayout>
