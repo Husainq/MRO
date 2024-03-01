@@ -42,7 +42,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/isi"
         android:layout_width="340dp"
-        android:layout_height="340dp"
+        android:layout_height="220dp"
         android:layout_marginTop="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -52,7 +52,7 @@
         <ListView
             android:id="@+id/hasil"
             android:layout_width="300dp"
-            android:layout_height="300dp"
+            android:layout_height="190dp"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
             app:flow_verticalBias="0.05"
@@ -62,19 +62,62 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
+        android:id="@+id/title_ket"
         android:layout_width="wrap_content"
-        android:text="aaaaaaaaaaaaaaaaa"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toRightOf="@id/isi"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/isi"/>
-    <ListView
-        android:layout_width="340dp"
+        android:text="Keterangan"
+        android:fontFamily="@font/poppinsbold"
+        android:layout_marginTop="22dp"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="@id/isi"
+        app:layout_constraintTop_toBottomOf="@id/isi"/>
+
+    <TextView
+        android:id="@+id/info1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/isi"
-        android:layout_marginTop="20dp"
+        android:text="Zayn Malik"
+        android:fontFamily="@font/poppinsregular"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="@id/isi"
+        app:layout_constraintTop_toBottomOf="@id/title_ket"/>
+
+    <TextView
+        android:id="@+id/info2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Project INI"
+        android:fontFamily="@font/poppinsregular"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="@id/isi"
+        app:layout_constraintTop_toBottomOf="@id/info1"/>
+
+    <TextView
+        android:id="@+id/info3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="INI Manager"
+        android:fontFamily="@font/poppinsregular"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="@id/isi"
+        app:layout_constraintTop_toBottomOf="@id/info2"/>
+
+    <TextView
+        android:id="@+id/status_mro"
+        android:layout_width="350dp"
+        android:layout_height="56dp"
+        android:background="@drawable/kolom_orange"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:fontFamily="@font/poppinssemibold"
+        android:text="Pending"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:gravity="center"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/info3"/>
+
+
 
 
 
