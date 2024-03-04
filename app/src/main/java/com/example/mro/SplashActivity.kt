@@ -14,10 +14,10 @@ class SplashActivity : AppCompatActivity() {
         setContentView(binding.root)
         changeFragment(SplashFragment())
     }
-
     private fun changeFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.begin, fragment)
-            .commit()
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.begin, fragment)
+        fragmentTransaction.commit()
     }
 }
