@@ -24,7 +24,6 @@ g<?xml version="1.0" encoding="utf-8"?>
             android:layout_width="match_parent"
             android:layout_height="54dp">
 
-
             <TextView
                 android:id="@+id/ou_judul"
                 android:layout_width="match_parent"
