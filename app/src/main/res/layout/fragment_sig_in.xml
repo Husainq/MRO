@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MasukFragment"
+    tools:context=".SignInFragment"
     android:background="@color/white">
 
     <ImageView
@@ -12,7 +12,7 @@
         android:layout_width="167dp"
         android:layout_height="150dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="110dp"
         android:src="@drawable/logo" />
 
     <LinearLayout
@@ -87,33 +87,5 @@
         android:textAllCaps="false"
         />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_below="@id/button_login_signin"
-        android:gravity="center">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Don’t have an account? "
-            android:fontFamily="@font/poppinsregular"
-            android:textSize="12sp"
-            android:textColor="@color/teks"
-            />
-
-        <TextView
-            android:id="@+id/txt_daftar_signin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sign Up"
-            android:fontFamily="@font/poppinsregular"
-            android:textSize="12sp"
-            android:textColor="@color/PrimaryColor"
-            />
-
-    </LinearLayout>
 
 </RelativeLayout>

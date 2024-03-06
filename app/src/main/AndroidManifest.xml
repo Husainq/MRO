@@ -12,21 +12,36 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MRO"
         tools:targetApi="31">
-
         <activity
             android:name=".SplashActivity"
-            android:exported="true">
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity
+            android:name=".AdministratorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MaterialActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProcurementActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PICActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProjectManagerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdminProjectActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:windowSoftInputMode="adjustPan" />
-
     </application>
 
 </manifest>
