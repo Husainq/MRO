@@ -14,7 +14,7 @@
         tools:targetApi="31">
         <activity
             android:name=".SplashActivity"
-            android:exported="false">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -39,9 +39,6 @@
         <activity
             android:name=".AdminProjectActivity"
             android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:windowSoftInputMode="adjustPan" />
     </application>
 
 </manifest>
