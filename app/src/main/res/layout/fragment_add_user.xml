@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfilFragment"
+    android:background="@color/white">
+
+    <TextView
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/header"
+        android:fontFamily="@font/poppinsmedium"
+        android:text="@string/adduser"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:textColor="@color/black"
+        />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/header"
+        android:layout_marginTop="35dp"
+        android:layout_centerHorizontal="true">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/foto"
+            android:layout_width="122dp"
+            android:layout_height="120dp"
+            android:src="@drawable/squid" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/btn_edit_logo"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/edit"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/ly1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/cl"
+        android:padding="30dp">
+
+        <EditText
+            android:id="@+id/edt_email_add"
+            android:layout_width="350dp"
+            android:layout_height="57dp"
+            android:background="@drawable/border"
+            android:hint="Email"
+            android:drawableLeft="@drawable/email"
+            android:paddingLeft="15dp"
+            android:drawablePadding="7dp"
+            android:inputType="textEmailAddress"
+            android:fontFamily="@font/poppinsregular"
+            android:textSize="13sp"
+            android:textColorHint="@color/teks"
+            android:textColor="@color/SecondaryColor"
+            />
+
+        <EditText
+            android:id="@+id/edt_username_add"
+            android:layout_width="match_parent"
+            android:layout_height="57dp"
+            android:background="@drawable/border"
+            android:hint="Username"
+            android:layout_marginTop="10dp"
+            android:drawableLeft="@drawable/user"
+            android:paddingLeft="15dp"
+            android:drawablePadding="7dp"
+            android:inputType="text"
+            android:fontFamily="@font/poppinsregular"
+            android:textSize="13sp"
+            android:textColorHint="@color/teks"
+            android:textColor="@color/SecondaryColor"
+            />
+
+        <EditText
+            android:id="@+id/edt_role_add"
+            android:layout_width="match_parent"
+            android:layout_height="57dp"
+            android:background="@drawable/border"
+            android:hint="Role"
+            android:layout_marginTop="10dp"
+            android:drawableLeft="@drawable/role"
+            android:paddingLeft="15dp"
+            android:drawablePadding="7dp"
+            android:inputType="textAutoComplete"
+            android:fontFamily="@font/poppinsregular"
+            android:textSize="13sp"
+            android:textColorHint="@color/teks"
+            android:textColor="@color/SecondaryColor"
+            />
+
+        <EditText
+            android:id="@+id/edt_password_add"
+            android:layout_width="match_parent"
+            android:layout_height="57dp"
+            android:background="@drawable/border"
+            android:layout_marginTop="10dp"
+            android:textColorHint="@color/teks"
+            android:inputType="textPassword"
+            android:fontFamily="@font/poppinsregular"
+            android:hint="Password"
+            android:drawableLeft="@drawable/pass"
+            android:paddingLeft="15dp"
+            android:drawablePadding="7dp"
+            android:textSize="13sp"
+            android:textColor="@color/SecondaryColor"
+            />
+
+    </LinearLayout>
+
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_signup"
+        android:layout_width="350dp"
+        android:layout_height="57dp"
+        android:text="Add"
+        android:layout_below="@id/ly1"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/kolom_biru"
+        android:width="300dp"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/poppinsbold"
+        android:textAllCaps="false"
+        />
+
+</RelativeLayout>
