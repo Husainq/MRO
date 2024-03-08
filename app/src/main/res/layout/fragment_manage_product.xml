@@ -25,11 +25,11 @@
         android:layout_width="340dp"
         android:layout_gravity="center"
         android:background="@drawable/border"
-        android:layout_height="wrap_content" />
+        android:layout_height="57dp" />
 
     <TextView
         android:layout_width="340dp"
-        android:layout_height="42dp"
+        android:layout_height="57dp"
         android:layout_marginTop="15dp"
         android:layout_gravity="center"
         android:gravity="center"
