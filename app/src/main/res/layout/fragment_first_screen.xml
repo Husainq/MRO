@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".vPagerFragment.screen.HalamanKetigaFragment">
+    tools:context=".onboarding.screen.FirstScreenFragment">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -42,7 +42,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/next_halaman_ketiga"
+        android:id="@+id/next_halaman_pertama"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -55,7 +55,6 @@
             android:layout_height="40dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/button_primary"
-
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
