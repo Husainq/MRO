@@ -12,8 +12,16 @@
     <string name="forget1">Keep calm, lets change</string>
     <string name="forget2">your password</string>
     <string name="email">Email</string>
-
+    <string name="mng_user">Manage User</string>
+    <string name="mng_project">Manage Project</string>
+    <string name="mng_product">Manage Product</string>
     <string name="verify">Email Verification</string>
     <string name="verify1">We have just sent you a verification</string>
     <string name="verify2">via your email</string>
+    <string name="adduser">Add User</string>
+    <string name="addproject">Add Project</string>
+    <string name="addproduct">Add Product</string>
+    <string name="finduser">Find a user</string>
+    <string name="fintproduct">Find a product</string>
+    <string name="fintproject">Find a project</string>
 </resources>

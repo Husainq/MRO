@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/header"
         android:fontFamily="@font/poppinsmedium"
-        android:text="@string/adduser"
+        android:text="@string/addproduct"
         android:textSize="18sp"
         android:gravity="center"
         android:textColor="@color/black"
@@ -34,7 +34,7 @@
             android:id="@+id/foto"
             android:layout_width="122dp"
             android:layout_height="120dp"
-            android:src="@drawable/squid" />
+            android:src="@drawable/cth_product" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/btn_edit_logo"
@@ -58,7 +58,7 @@
             android:layout_width="350dp"
             android:layout_height="57dp"
             android:background="@drawable/border"
-            android:hint="Email"
+            android:hint="Product Name"
             android:drawableLeft="@drawable/email"
             android:paddingLeft="15dp"
             android:drawablePadding="7dp"
@@ -74,7 +74,7 @@
             android:layout_width="match_parent"
             android:layout_height="57dp"
             android:background="@drawable/border"
-            android:hint="Username"
+            android:hint="Categories Product"
             android:layout_marginTop="10dp"
             android:drawableLeft="@drawable/user"
             android:paddingLeft="15dp"
@@ -91,7 +91,7 @@
             android:layout_width="match_parent"
             android:layout_height="57dp"
             android:background="@drawable/border"
-            android:hint="Role"
+            android:hint="Unit Product"
             android:layout_marginTop="10dp"
             android:drawableLeft="@drawable/role"
             android:paddingLeft="15dp"
@@ -100,23 +100,6 @@
             android:fontFamily="@font/poppinsregular"
             android:textSize="13sp"
             android:textColorHint="@color/teks"
-            android:textColor="@color/SecondaryColor"
-            />
-
-        <EditText
-            android:id="@+id/edt_password_add"
-            android:layout_width="match_parent"
-            android:layout_height="57dp"
-            android:background="@drawable/border"
-            android:layout_marginTop="10dp"
-            android:textColorHint="@color/teks"
-            android:inputType="textPassword"
-            android:fontFamily="@font/poppinsregular"
-            android:hint="Password"
-            android:drawableLeft="@drawable/pass"
-            android:paddingLeft="15dp"
-            android:drawablePadding="7dp"
-            android:textSize="13sp"
             android:textColor="@color/SecondaryColor"
             />
 
