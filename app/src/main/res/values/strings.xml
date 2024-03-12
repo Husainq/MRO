@@ -6,8 +6,9 @@
     <string name="deskripsi_splash">"Your Reliable Partner for Engineering, Procurement, &amp; Construction Projects"</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="profil">Profil</string>
+    <string name="role_user">Admin Project</string>
     <string name="role_admin">Administrator</string>
-    <string name="role">Admin Project</string>
+    <string name="role">Role</string>
     <string name="forget">Reset Password</string>
     <string name="forget1">Keep calm, lets change</string>
     <string name="forget2">your password</string>
@@ -24,4 +25,20 @@
     <string name="finduser">Find a user</string>
     <string name="fintproduct">Find a product</string>
     <string name="fintproject">Find a project</string>
+    <string name="productname">Product Name</string>
+    <string name="categoriesproduct">Product Categories</string>
+    <string name="unitpoduct">Product Unit</string>
+    <string name="project_name">Project Name</string>
+    <string name="project_manager">Project Manager</string>
+    <string name="emailuser">ahmad@gmail.com</string>
+    <string name="add">Add</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="hal1">Hal1</string>
+    <string name="next">Next</string>
+    <string name="change_password">Change Password</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="sign_in">Sign In</string>
+    <string name="forget_pass">Forget Password ?</string>
 </resources>

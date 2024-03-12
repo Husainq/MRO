@@ -41,7 +41,7 @@
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppinssemibold"
                 android:textSize="18sp"
-                android:text="Mr.Sins"/>
+                android:text="@string/user"/>
 
             <TextView
                 android:id="@+id/email_user"
@@ -54,7 +54,7 @@
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppinssemibold"
                 android:textSize="18sp"
-                android:text="sins@gmail.com"/>
+                android:text="@string/emailuser"/>
 
             <TextView
                 android:id="@+id/role_user"
@@ -66,7 +66,7 @@
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppinssemibold"
                 android:textSize="18sp"
-                android:text="Project Manager"/>
+                android:text="@string/role"/>
 
             <ImageView
                 android:id="@+id/icn_edit"
