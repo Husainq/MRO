@@ -8,17 +8,34 @@
     tools:context=".ProfilFragment"
     android:background="@color/white">
 
-    <TextView
-        android:layout_marginTop="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/header"
-        android:fontFamily="@font/poppinsmedium"
-        android:text="@string/addproduct"
-        android:textSize="18sp"
-        android:gravity="center"
-        android:textColor="@color/black"
-        />
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppinsmedium"
+            android:text="@string/addproduct"
+            android:textSize="18sp"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:textColor="@color/black"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl"
@@ -34,7 +51,7 @@
             android:id="@+id/foto"
             android:layout_width="122dp"
             android:layout_height="120dp"
-            android:src="@drawable/cth_product" />
+            android:src="@drawable/box" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/btn_edit_logo"
@@ -54,12 +71,12 @@
         android:padding="30dp">
 
         <EditText
-            android:id="@+id/edt_email_add"
+            android:id="@+id/edt_productname_add"
             android:layout_width="350dp"
             android:layout_height="57dp"
             android:background="@drawable/border"
-            android:hint="Product Name"
-            android:drawableLeft="@drawable/email"
+            android:hint="@string/productname"
+            android:drawableLeft="@drawable/add_product"
             android:paddingLeft="15dp"
             android:drawablePadding="7dp"
             android:inputType="textEmailAddress"
@@ -70,13 +87,13 @@
             />
 
         <EditText
-            android:id="@+id/edt_username_add"
+            android:id="@+id/edt_categories_add"
             android:layout_width="match_parent"
             android:layout_height="57dp"
             android:background="@drawable/border"
-            android:hint="Categories Product"
+            android:hint="@string/categoriesproduct"
             android:layout_marginTop="10dp"
-            android:drawableLeft="@drawable/user"
+            android:drawableLeft="@drawable/categories"
             android:paddingLeft="15dp"
             android:drawablePadding="7dp"
             android:inputType="text"
@@ -87,13 +104,13 @@
             />
 
         <EditText
-            android:id="@+id/edt_role_add"
+            android:id="@+id/edt_unit_add"
             android:layout_width="match_parent"
             android:layout_height="57dp"
             android:background="@drawable/border"
-            android:hint="Unit Product"
+            android:hint="@string/unitpoduct"
             android:layout_marginTop="10dp"
-            android:drawableLeft="@drawable/role"
+            android:drawableLeft="@drawable/unit"
             android:paddingLeft="15dp"
             android:drawablePadding="7dp"
             android:inputType="textAutoComplete"
@@ -111,7 +128,7 @@
         android:id="@+id/button_signup"
         android:layout_width="350dp"
         android:layout_height="57dp"
-        android:text="Add"
+        android:text="@string/add"
         android:layout_below="@id/ly1"
         android:layout_centerHorizontal="true"
         android:background="@drawable/kolom_biru"

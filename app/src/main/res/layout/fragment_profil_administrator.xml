@@ -105,7 +105,7 @@
                 android:fontFamily="@font/poppinssemibold"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:text="Manage User"/>
+                android:text="@string/mng_user"/>
         </LinearLayout>
 
         <LinearLayout
@@ -129,7 +129,7 @@
                 android:fontFamily="@font/poppinssemibold"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:text="Manage Product"/>
+                android:text="@string/mng_product"/>
         </LinearLayout>
 
         <LinearLayout
@@ -153,7 +153,7 @@
                 android:fontFamily="@font/poppinssemibold"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:text="Manage Project"/>
+                android:text="@string/mng_project"/>
         </LinearLayout>
 
         <LinearLayout
@@ -178,7 +178,7 @@
                 android:fontFamily="@font/poppinssemibold"
                 android:textColor="@color/RedWarning"
                 android:textSize="18sp"
-                android:text="Sign Out"/>
+                android:text="@string/sign_out"/>
         </LinearLayout>
     </LinearLayout>
 

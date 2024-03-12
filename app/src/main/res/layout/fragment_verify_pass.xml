@@ -46,7 +46,7 @@
         android:src="@drawable/forget2"
         app:layout_constraintTop_toBottomOf="@id/header"
         android:layout_marginTop="40dp"
-        android:contentDescription="Hal1"
+        android:contentDescription="@string/hal1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         />
@@ -79,7 +79,7 @@
         android:id="@+id/button_next_emailverif"
         android:layout_width="350dp"
         android:layout_height="57dp"
-        android:text="Sign In"
+        android:text="@string/sign_in"
         android:layout_centerHorizontal="true"
         android:background="@drawable/kolom_biru"
         android:width="300dp"

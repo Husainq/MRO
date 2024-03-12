@@ -1,59 +1,114 @@
 package com.example.mro
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
+import com.google.firebase.auth.FirebaseAuthInvalidUserException
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class SignInFragment : Fragment(R.layout.fragment_sign_in) {
 
-/**
- * A simple [Fragment] subclass.
- * Use the [SignInFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class SignInFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var auth: FirebaseAuth
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sign_in, container, false)
-    }
+        auth = Firebase.auth
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment LoginFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SignInFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+        // Inisialisasi elemen-elemen UI
+        val emailEditText: EditText = view.findViewById(R.id.edt_email_signin)
+        val passwordEditText: EditText = view.findViewById(R.id.edt_pass_signin)
+        val btnMasuk: Button = view.findViewById(R.id.button_login_signin)
+        val forgotPass: TextView = view.findViewById(R.id.forgotpass_signin)
+
+        // Set listener untuk tombol masuk
+        btnMasuk.setOnClickListener {
+            val email = emailEditText.text.toString().trim()
+            val password = passwordEditText.text.toString().trim()
+
+            // Validasi input sebelum masuk
+            if (email.isEmpty() || password.isEmpty()) {
+                Toast.makeText(requireContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
+
+            auth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(requireActivity()) { task ->
+                    if (task.isSuccessful) {
+                        // ...
+                        val user = auth.currentUser
+                        val userId = user?.uid
+
+                        val database = FirebaseDatabase.getInstance()
+                        val reference = database.getReference("User")
+
+                        userId?.let {
+                            reference.child(it).get().addOnSuccessListener { snapshot ->
+                                val role = snapshot.child("Role").value.toString()
+                                if (role == "Administrator"){
+                                val intent = Intent(requireContext(), AdministratorActivity::class.java)
+                                startActivity(intent)
+                                requireActivity().finish()
+                                }
+                                else if (role == "Material"){
+                                    val intent = Intent(requireContext(), MaterialActivity::class.java)
+                                    startActivity(intent)
+                                    requireActivity().finish()
+                                }
+                                else if (role == "PIC"){
+                                    val intent = Intent(requireContext(), PICActivity::class.java)
+                                    startActivity(intent)
+                                    requireActivity().finish()
+                                }
+                                else if (role == "Procurement"){
+                                    val intent = Intent(requireContext(), ProcurementActivity::class.java)
+                                    startActivity(intent)
+                                    requireActivity().finish()
+                                }
+                                else if (role == "Project Manager"){
+                                    val intent = Intent(requireContext(), ProjectManagerActivity::class.java)
+                                    startActivity(intent)
+                                    requireActivity().finish()
+                                }
+                                else{
+                                    val intent = Intent(requireContext(), AdminProjectActivity::class.java)
+                                    startActivity(intent)
+                                    requireActivity().finish()
+                                }
+                            }.addOnFailureListener { e ->
+                                // Gagal mendapatkan informasi role pengguna
+                                Toast.makeText(requireContext(), "Failed to sign in: ${e.message}", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    } else {
+                        // Masuk gagal, tampilkan pesan kesalahan
+                        val exception = task.exception
+                        if (exception is FirebaseAuthInvalidUserException || exception is FirebaseAuthInvalidCredentialsException) {
+                            // Pesan untuk email atau password salah
+                            Toast.makeText(requireContext(), "Incorrect email or password", Toast.LENGTH_SHORT).show()
+                        } else {
+                            // Pesan kesalahan lainnya
+                            Toast.makeText(requireContext(), "Please fill in all fields: ${exception?.message}", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+
+        }
+        forgotPass.setOnClickListener{
+            val forgot = ForgotPassFragment()
+            val transaction : FragmentTransaction = requireFragmentManager().beginTransaction()
+            transaction.replace(R.id.fragmentContainerView, forgot)
+            transaction.commit()
+        }
     }
 }

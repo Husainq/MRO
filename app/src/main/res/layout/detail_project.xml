@@ -32,7 +32,7 @@
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppinssemibold"
                 android:textSize="18sp"
-                android:text="Project Name"/>
+                android:text="@string/project_name"/>
 
             <TextView
                 android:id="@+id/pm_project"
@@ -45,7 +45,7 @@
                 android:fontFamily="@font/poppinssemibold"
                 android:textSize="18sp"
                 android:layout_marginTop="3dp"
-                android:text="Project Manager "/>
+                android:text="@string/project_manager"/>
 
             <TextView
                 android:id="@+id/role_project"
@@ -58,7 +58,7 @@
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppinssemibold"
                 android:textSize="18sp"
-                android:text="Project Manager"/>
+                android:text="@string/project_manager"/>
 
             <ImageView
                 android:id="@+id/icn_edit"

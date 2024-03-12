@@ -105,7 +105,7 @@
                 android:fontFamily="@font/poppinssemibold"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:text="Edit Profile"/>
+                android:text="@string/edit_profile"/>
         </LinearLayout>
 
         <LinearLayout
@@ -129,7 +129,7 @@
                 android:fontFamily="@font/poppinssemibold"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:text="Change Password"/>
+                android:text="@string/change_password"/>
         </LinearLayout>
 
         <LinearLayout
@@ -154,7 +154,7 @@
                 android:fontFamily="@font/poppinssemibold"
                 android:textColor="@color/RedWarning"
                 android:textSize="18sp"
-                android:text="Sign Out"/>
+                android:text="@string/sign_out"/>
         </LinearLayout>
     </LinearLayout>
 
