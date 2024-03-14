@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentContainer
 import androidx.fragment.app.FragmentTransaction
+import androidx.navigation.fragment.findNavController
 import com.example.mro.databinding.FragmentSignInBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
@@ -115,10 +116,7 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
         }
 
         forgotPass.setOnClickListener{
-            val forgot = ForgotPassFragment()
-            val transaction : FragmentTransaction = requireFragmentManager().beginTransaction()
-            transaction.replace(R.id.fragmentContainerView, forgot)
-            transaction.commit()
+            findNavController().navigate(R.id.action_signInFragment_to_forgotPassFragment)
         }
     }
 }
