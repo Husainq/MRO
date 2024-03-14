@@ -1,15 +1,13 @@
 package com.example.mro
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 
 class ForgotPassFragment : Fragment(R.layout.fragment_forgot_pass) {
@@ -37,9 +35,7 @@ class ForgotPassFragment : Fragment(R.layout.fragment_forgot_pass) {
             FirebaseAuth.getInstance().sendPasswordResetEmail(email).addOnCompleteListener{
                 if (it.isSuccessful) {
                     Toast.makeText(requireContext(), "Check your email to reset your password", Toast.LENGTH_SHORT).show()
-
-                    val fragmentManager = requireActivity().supportFragmentManager
-                    fragmentManager.popBackStack()
+                    findNavController().navigate(R.id.action_forgotPassFragment_to_signInFragment)
 
                 }else {
                     Toast.makeText(requireContext(),"${it.exception?.message}", Toast.LENGTH_SHORT).show()
