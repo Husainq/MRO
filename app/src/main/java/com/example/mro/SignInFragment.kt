@@ -60,35 +60,40 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
                         userId?.let {
                             reference.child(it).get().addOnSuccessListener { snapshot ->
                                 val role = snapshot.child("Role").value.toString()
-                                if (role == "Administrator"){
-                                val intent = Intent(requireContext(), AdministratorActivity::class.java)
-                                startActivity(intent)
-                                requireActivity().finish()
-                                }
-                                else if (role == "Material"){
-                                    val intent = Intent(requireContext(), MaterialActivity::class.java)
-                                    startActivity(intent)
-                                    requireActivity().finish()
-                                }
-                                else if (role == "PIC"){
-                                    val intent = Intent(requireContext(), PICActivity::class.java)
-                                    startActivity(intent)
-                                    requireActivity().finish()
-                                }
-                                else if (role == "Procurement"){
-                                    val intent = Intent(requireContext(), ProcurementActivity::class.java)
-                                    startActivity(intent)
-                                    requireActivity().finish()
-                                }
-                                else if (role == "Project Manager"){
-                                    val intent = Intent(requireContext(), ProjectManagerActivity::class.java)
-                                    startActivity(intent)
-                                    requireActivity().finish()
-                                }
-                                else{
-                                    val intent = Intent(requireContext(), AdminProjectActivity::class.java)
-                                    startActivity(intent)
-                                    requireActivity().finish()
+                                when (role) {
+                                    "Administrator" -> {
+                                        val intent = Intent(requireContext(), AdministratorActivity::class.java)
+                                        startActivity(intent)
+                                        requireActivity().finish()
+                                    }
+                                    "Material" -> {
+                                        val intent = Intent(requireContext(), MaterialActivity::class.java)
+                                        startActivity(intent)
+                                        requireActivity().finish()
+                                    }
+                                    "PIC" -> {
+                                        val intent = Intent(requireContext(), PICActivity::class.java)
+                                        startActivity(intent)
+                                        requireActivity().finish()
+                                    }
+                                    "Procurement" -> {
+                                        val intent = Intent(requireContext(), ProcurementActivity::class.java)
+                                        startActivity(intent)
+                                        requireActivity().finish()
+                                    }
+                                    "Project Manager" -> {
+                                        val intent = Intent(requireContext(), ProjectManagerActivity::class.java)
+                                        startActivity(intent)
+                                        requireActivity().finish()
+                                    }
+                                    "Admin Project" -> {
+                                        val intent = Intent(requireContext(), AdminProjectActivity::class.java)
+                                        startActivity(intent)
+                                        requireActivity().finish()
+                                    }
+                                    else -> {
+                                        Toast.makeText(requireContext(), "Your account is not found", Toast.LENGTH_SHORT).show()
+                                    }
                                 }
                             }.addOnFailureListener { e ->
                                 // Gagal mendapatkan informasi role pengguna

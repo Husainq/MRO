@@ -41,4 +41,5 @@
     <string name="edit_profile">Edit Profile</string>
     <string name="sign_in">Sign In</string>
     <string name="forget_pass">Forget Password?</string>
+    <string name="addmro">Add MRO</string>
 </resources>
