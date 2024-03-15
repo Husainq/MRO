@@ -16,6 +16,7 @@
         android:layout_marginTop="30dp">
 
         <ImageView
+            android:id="@+id/back"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/back"
@@ -125,7 +126,7 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_signup"
+        android:id="@+id/button_tambah_product"
         android:layout_width="350dp"
         android:layout_height="57dp"
         android:text="@string/add"

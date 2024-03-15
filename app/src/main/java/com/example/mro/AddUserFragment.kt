@@ -1,59 +1,101 @@
 package com.example.mro
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
+import com.example.mro.databinding.FragmentAddUserBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class AddUserFragment : Fragment(R.layout.fragment_add_user) {
 
-/**
- * A simple [Fragment] subclass.
- * Use the [AddUserFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class AddUserFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    lateinit var binding: FragmentAddUserBinding
+    private lateinit var auth: FirebaseAuth
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_user, container, false)
-    }
+        auth = Firebase.auth
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AddUserFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            AddUserFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+        // Inisialisasi elemen-elemen UI
+        val uemail: EditText = view.findViewById(R.id.edt_email_add)
+        val uname: EditText = view.findViewById(R.id.edt_username_add)
+        val urole: EditText = view.findViewById(R.id.edt_role_add)
+        val usandi: EditText = view.findViewById(R.id.edt_password_add)
+        val btnDaftar: Button = view.findViewById(R.id.button_tambar_user)
+
+
+        btnDaftar.setOnClickListener {
+            val gmail = uemail.text.toString().trim()
+            val username = uname.text.toString().trim()
+            val role = urole.text.toString().trim()
+            val password = usandi.text.toString().trim()
+
+            // Validasi input sebelum pendaftaran
+            if (gmail.isEmpty() || username.isEmpty() || role.isEmpty() || password.isEmpty()) {
+                Toast.makeText(requireContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
+
+            // Proses pendaftaran ke Firebase Authentication
+            auth.createUserWithEmailAndPassword(gmail, password)
+                .addOnCompleteListener(requireActivity()) { task ->
+                    if (task.isSuccessful) {
+                        // Pendaftaran berhasil
+                        val user = auth.currentUser
+                        val userId = user?.uid // atau dapatkan ID pengguna dari hasil pendaftaran
+
+                        // Menyimpan informasi pengguna ke Realtime Database
+                        val database = FirebaseDatabase.getInstance()
+                        val reference = database.getReference("User") // Ganti dengan lokasi yang benar di database Anda
+
+                        val userData = HashMap<String, Any>()
+                        userData["email"] = gmail
+                        userData["username"] = username
+                        userData["role"] = role
+                        userData["password"] = password
+
+                        userId?.let {
+                            reference.child(it).setValue(userData)
+                                .addOnSuccessListener {
+                                    // Data pengguna berhasil disimpan ke database
+                                    Toast.makeText(requireContext(), "Successfully added user!", Toast.LENGTH_SHORT).show()
+                                    // Redirect ke halaman utama setelah pendaftaran berhasil
+                                    val addUserFragment = AddUserFragment()
+                                    val transaction: FragmentTransaction = requireFragmentManager().beginTransaction()
+
+                                    if (!requireActivity().isFinishing && !requireActivity().isDestroyed) {
+                                        transaction.replace(R.id.container, addUserFragment)
+                                        transaction.commit()
+                                    }
+
+                                }
+                                .addOnFailureListener { e ->
+                                    // Gagal menyimpan data pengguna ke database
+                                    Toast.makeText(requireContext(), "Failed to add user: ${e.message}", Toast.LENGTH_SHORT).show()
+                                }
+                        }
+                    } else {
+                        // Pendaftaran gagal, tampilkan pesan kesalahan
+                        val exception = task.exception
+                        Toast.makeText(requireContext(), "Failed: ${exception?.message}", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+        }
+
+        // Listener untuk tombol back (redirect ke halaman sebelumnya)
+        binding.back.setOnClickListener{
+            val manageUserFragment = ManageUserFragment()
+            val transaction: FragmentTransaction = requireFragmentManager().beginTransaction()
+            transaction.replace(R.id.container,manageUserFragment)
+            transaction.commit()
+        }
     }
 }
