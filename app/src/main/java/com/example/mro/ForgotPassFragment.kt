@@ -5,6 +5,7 @@ import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import androidx.navigation.fragment.findNavController
@@ -17,6 +18,7 @@ class ForgotPassFragment : Fragment(R.layout.fragment_forgot_pass) {
 
         val emailEditText: EditText = view.findViewById(R.id.edt_email_forgotpass)
         val resetPasswordButton: AppCompatButton = view.findViewById(R.id.button_next_forgotpass)
+        val backButton : ImageView = view.findViewById(R.id.btn_back_forgotpass)
 
         resetPasswordButton.setOnClickListener {
             val email = emailEditText.text.toString().trim()
@@ -41,6 +43,10 @@ class ForgotPassFragment : Fragment(R.layout.fragment_forgot_pass) {
                     Toast.makeText(requireContext(),"${it.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
             }
+        }
+
+        backButton.setOnClickListener {
+            findNavController().navigate(R.id.action_forgotPassFragment_to_signInFragment)
         }
     }
 }

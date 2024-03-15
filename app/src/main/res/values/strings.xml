@@ -35,10 +35,10 @@
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="hal1">Hal1</string>
-    <string name="next">Next</string>
+    <string name="next">Reset Password</string>
     <string name="change_password">Change Password</string>
     <string name="sign_out">Sign Out</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="sign_in">Sign In</string>
-    <string name="forget_pass">Forget Password ?</string>
+    <string name="forget_pass">Forget Password?</string>
 </resources>
