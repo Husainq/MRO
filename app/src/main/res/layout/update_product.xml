@@ -49,41 +49,51 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cl" />
 
-    <EditText
-        android:id="@+id/upProductCategories"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:fontFamily="@font/poppinsregular"
-        android:textSize="18sp"
-        android:textColor="@color/SecondaryColor"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:hint="@string/categoriesproduct"
-        android:inputType="text"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/upCategories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/upProductName" />
+        app:layout_constraintTop_toBottomOf="@+id/upProductName"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
 
-    <EditText
-        android:id="@+id/upProductUnit"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:hint="@string/unitpoduct"
-        android:inputType="text"
+        <AutoCompleteTextView
+            android:id="@+id/upProductCategories"
+            android:layout_width="390dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:hint="Product Categories"
+            android:fontFamily="@font/poppinsregular"
+            android:textSize="18sp"
+            android:textColor="@color/SecondaryColor"
+            android:inputType="none"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/upUnit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:fontFamily="@font/poppinsregular"
-        android:textSize="18sp"
-        android:textColor="@color/SecondaryColor"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/upProductCategories" />
+        app:layout_constraintTop_toBottomOf="@+id/upCategories"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+
+        <AutoCompleteTextView
+            android:id="@+id/upProductUnit"
+            android:layout_width="390dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:hint="Product Unit"
+            android:fontFamily="@font/poppinsregular"
+            android:textSize="18sp"
+            android:textColor="@color/SecondaryColor"
+            android:inputType="none"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
