@@ -16,7 +16,7 @@
         android:layout_marginTop="30dp">
 
         <ImageView
-            android:id="@+id/back"
+            android:id="@+id/back_user"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/back"
@@ -104,22 +104,27 @@
             android:textColor="@color/SecondaryColor"
             />
 
-        <EditText
-            android:id="@+id/edt_role_add"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="57dp"
-            android:background="@drawable/border"
-            android:hint="@string/role"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:drawableLeft="@drawable/role"
-            android:paddingLeft="15dp"
-            android:drawablePadding="7dp"
-            android:inputType="textAutoComplete"
-            android:fontFamily="@font/poppinsregular"
-            android:textSize="13sp"
-            android:textColorHint="@color/teks"
-            android:textColor="@color/SecondaryColor"
-            />
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+
+            <AutoCompleteTextView
+                android:id="@+id/edt_role_add"
+                android:background="@drawable/border"
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:hint="Role"
+                android:fontFamily="@font/poppinsregular"
+                android:textSize="13sp"
+                android:drawableLeft="@drawable/role"
+                android:paddingLeft="15dp"
+                android:drawablePadding="7dp"
+                android:textColorHint="@color/teks"
+                android:textColor="@color/SecondaryColor"
+                android:inputType="none"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <EditText
             android:id="@+id/edt_password_add"

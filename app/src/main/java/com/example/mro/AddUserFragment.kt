@@ -90,8 +90,8 @@ class AddUserFragment : Fragment(R.layout.fragment_add_user) {
 
         }
 
-        // Listener untuk tombol back (redirect ke halaman sebelumnya)
-        binding.back.setOnClickListener{
+        // Listener uuntuk tombol back (redirect ke halaman sebelumnya)
+        binding.backUser.setOnClickListener{
             val manageUserFragment = ManageUserFragment()
             val transaction: FragmentTransaction = requireFragmentManager().beginTransaction()
             transaction.replace(R.id.container,manageUserFragment)
