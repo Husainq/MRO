@@ -12,7 +12,6 @@ import com.google.firebase.auth.FirebaseAuth
 class ManageUserFragment : Fragment() {
 
     lateinit var binding: FragmentManageUserBinding
-    private lateinit var auth: FirebaseAuth
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.backUser.setOnClickListener {

@@ -32,6 +32,12 @@ class ProfilAdministratorFragment : Fragment() {
     private val PICK_IMAGE_REQUEST = 1
     private var isFragmentAttached = false // Variabel untuk menandai fragment terpasang
 
+    /**
+     * efnuewnuewfeuwbfewufbweubfewubfewufbwmuhammad qalbi husaini belke
+     * ndeh capek kalau kek gini trtrus haaaaaaaaaaaaaaaaaa
+     * wkwkkwwkwk
+     * 
+     */
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -42,20 +48,6 @@ class ProfilAdministratorFragment : Fragment() {
             val userFragment = ManageUserFragment()
             val transaction: FragmentTransaction = requireFragmentManager().beginTransaction()
             transaction.replace(R.id.container,userFragment)
-            transaction.commit()
-        }
-
-        binding.product.setOnClickListener{
-            val productFragment = ManageProductFragment()
-            val transaction: FragmentTransaction = requireFragmentManager().beginTransaction()
-            transaction.replace(R.id.container,productFragment)
-            transaction.commit()
-        }
-
-        binding.project.setOnClickListener{
-            val projectFragment = ManageProjectFragment()
-            val transaction: FragmentTransaction = requireFragmentManager().beginTransaction()
-            transaction.replace(R.id.container,projectFragment)
             transaction.commit()
         }
 
@@ -86,7 +78,7 @@ class ProfilAdministratorFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        isFragmentAttached = false // Set variabel bahwa fragment sudah tidak terpasang lagi
+        isFragmentAttached = false // Set variabel bahwa fragment sudah tidak terpasang lagikfnwifnefniewfnweif muhammad qalbi
     }
 
     private fun displayUserInfo() {
@@ -100,7 +92,7 @@ class ProfilAdministratorFragment : Fragment() {
                     if (isFragmentAttached) { // Pastikan fragment masih terpasang sebelum menggunakan konteks
                         if (snapshot.exists()) {
                             val username = snapshot.child("username").getValue(String::class.java)
-
+5
                             binding.namauser.setText(username)
 
                             profileImageUri?.let {
