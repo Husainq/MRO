@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddProjectFragment"
+    android:background="@color/white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header_add_project"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp">
+
+        <ImageView
+            android:id="@+id/backProject"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppinsmedium"
+            android:text="@string/add_project"
+            android:textSize="18sp"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:textColor="@color/black"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/ly1_addproject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/header_add_project"
+        android:padding="30dp">
+
+        <EditText
+            android:id="@+id/edt_projectname_add"
+            android:layout_width="match_parent"
+            android:layout_height="57dp"
+            android:background="@drawable/border"
+            android:hint="@string/project_name"
+            android:paddingLeft="15dp"
+            android:drawablePadding="7dp"
+            android:inputType="textEmailAddress"
+            android:fontFamily="@font/poppinsregular"
+            android:textSize="13sp"
+            android:textColorHint="@color/teks"
+            android:textColor="@color/SecondaryColor"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="15dp"
+            android:background="@drawable/border">
+
+            <Spinner
+                android:id="@+id/edt_area_add"
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:fontFamily="@font/poppinsregular"
+                android:textSize="13sp"
+                android:spinnerMode="dialog"
+                android:prompt="@string/role"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="15dp"
+            android:background="@drawable/border">
+
+            <Spinner
+                android:id="@+id/edt_adminproject_add"
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:fontFamily="@font/poppinsregular"
+                android:textSize="13sp"
+                android:spinnerMode="dialog"
+                android:prompt="@string/admin_project"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="15dp"
+            android:background="@drawable/border">
+
+            <Spinner
+                android:id="@+id/edt_pj_add"
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:fontFamily="@font/poppinsregular"
+                android:textSize="13sp"
+                android:spinnerMode="dialog"
+                android:prompt="@string/pj_project"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="15dp"
+            android:background="@drawable/border">
+
+            <Spinner
+                android:id="@+id/edt_procurement_add"
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:fontFamily="@font/poppinsregular"
+                android:textSize="13sp"
+                android:spinnerMode="dialog"
+                android:prompt="@string/procurement"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="15dp"
+            android:background="@drawable/border">
+
+            <Spinner
+                android:id="@+id/edt_pic_add"
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:fontFamily="@font/poppinsregular"
+                android:textSize="13sp"
+                android:spinnerMode="dialog"
+                android:prompt="@string/pic"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="15dp"
+            android:background="@drawable/border">
+
+            <Spinner
+                android:id="@+id/edt_material_add"
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:fontFamily="@font/poppinsregular"
+                android:textSize="13sp"
+                android:spinnerMode="dialog"
+                android:prompt="@string/material"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_tambah_project"
+        android:layout_width="350dp"
+        android:layout_height="57dp"
+        android:text="@string/add"
+        android:layout_below="@id/ly1_addproject"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button_submit"
+        android:width="300dp"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/poppinsbold"
+        android:textAllCaps="false"
+        />
+
+</RelativeLayout>
