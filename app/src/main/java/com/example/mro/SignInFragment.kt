@@ -59,13 +59,13 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
 
                         userId?.let {
                             reference.child(it).get().addOnSuccessListener { snapshot ->
-                                val role = snapshot.child("Role").value.toString()
+                                val role = snapshot.child("role").value.toString()
                                 when (role) {
-//                                    "Administrator" -> {
-//                                        val intent = Intent(requireContext(), AdministratorActivity::class.java)
-//                                        startActivity(intent)
-//                                        requireActivity().finish()
-//                                    }
+                                    "Administrator" -> {
+                                        val intent = Intent(requireContext(), AdministratorActivity::class.java)
+                                        startActivity(intent)
+                                        requireActivity().finish()
+                                    }
 //                                    "Material" -> {
 //                                        val intent = Intent(requireContext(), MaterialActivity::class.java)
 //                                        startActivity(intent)
