@@ -42,4 +42,5 @@
     <string name="sign_in">Sign In</string>
     <string name="forget_pass">Forget Password?</string>
     <string name="addmro">Add MRO</string>
+    <string name="slctrole">Select Role</string>
 </resources>

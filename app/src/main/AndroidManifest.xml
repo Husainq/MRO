@@ -21,24 +21,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".AdministratorActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MaterialActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ProcurementActivity"
-            android:exported="false" />
-        <activity
-            android:name=".PICActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ProjectManagerActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AdminProjectActivity"
-            android:exported="false" />
     </application>
 
 </manifest>
