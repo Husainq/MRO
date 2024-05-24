@@ -2,121 +2,89 @@ package com.example.mro
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentContainer
-import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.fragment.findNavController
-import com.example.mro.databinding.FragmentSignInBinding
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
-import com.google.firebase.auth.FirebaseAuthInvalidUserException
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.ktx.Firebase
+import com.google.firebase.database.*
 
 class SignInFragment : Fragment(R.layout.fragment_sign_in) {
 
-    private lateinit var auth: FirebaseAuth
+    private lateinit var database: DatabaseReference
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        auth = Firebase.auth
+        database = FirebaseDatabase.getInstance().getReference("User")
 
-        // Inisialisasi elemen-elemen UI
         val emailEditText: EditText = view.findViewById(R.id.edt_email_signin)
         val passwordEditText: EditText = view.findViewById(R.id.edt_pass_signin)
         val btnMasuk: Button = view.findViewById(R.id.button_login_signin)
         val forgotPass: TextView = view.findViewById(R.id.forgotpass_signin)
 
-        // Set listener untuk tombol masuk
         btnMasuk.setOnClickListener {
             val email = emailEditText.text.toString().trim()
             val password = passwordEditText.text.toString().trim()
 
-            // Validasi input sebelum masuk
             if (email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(requireContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            auth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(requireActivity()) { task ->
-                    if (task.isSuccessful) {
-                        // ...
-                        val user = auth.currentUser
-                        val userId = user?.uid
+            authenticateUser(email, password)
+        }
 
-                        val database = FirebaseDatabase.getInstance()
-                        val reference = database.getReference("User")
+        forgotPass.setOnClickListener {
+            findNavController().navigate(R.id.action_signInFragment_to_forgotPassFragment)
+        }
+    }
 
-                        userId?.let {
-                            reference.child(it).get().addOnSuccessListener { snapshot ->
-                                val role = snapshot.child("role").value.toString()
-                                when (role) {
-                                    "Administrator" -> {
-                                        val intent = Intent(requireContext(), AdministratorActivity::class.java)
-                                        startActivity(intent)
-                                        requireActivity().finish()
-                                    }
-//                                    "Material" -> {
-//                                        val intent = Intent(requireContext(), MaterialActivity::class.java)
-//                                        startActivity(intent)
-//                                        requireActivity().finish()
-//                                    }
-//                                    "PIC" -> {
-//                                        val intent = Intent(requireContext(), PICActivity::class.java)
-//                                        startActivity(intent)
-//                                        requireActivity().finish()
-//                                    }
-//                                    "Procurement" -> {
-//                                        val intent = Intent(requireContext(), ProcurementActivity::class.java)
-//                                        startActivity(intent)
-//                                        requireActivity().finish()
-//                                    }
-//                                    "Project Manager" -> {
-//                                        val intent = Intent(requireContext(), ProjectManagerActivity::class.java)
-//                                        startActivity(intent)
-//                                        requireActivity().finish()
-//                                    }
-//                                    "Admin Project" -> {
-//                                        val intent = Intent(requireContext(), AdminProjectActivity::class.java)
-//                                        startActivity(intent)
-//                                        requireActivity().finish()
-//                                    }
-                                    else -> {
-                                        Toast.makeText(requireContext(), "Your account is not found", Toast.LENGTH_SHORT).show()
-                                    }
-                                }
-                            }.addOnFailureListener { e ->
-                                // Gagal mendapatkan informasi role pengguna
-                                Toast.makeText(requireContext(), "Failed to sign in: ${e.message}", Toast.LENGTH_SHORT).show()
+    private fun authenticateUser(email: String, password: String) {
+        database.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                var userFound = false
+
+                for (userSnapshot in snapshot.children) {
+                    val userEmail = userSnapshot.child("email").value.toString()
+                    val userPassword = userSnapshot.child("password").value.toString()
+
+                    if (email == userEmail && password == userPassword) {
+                        userFound = true
+                        val role = userSnapshot.child("role").value.toString()
+
+                        when (role) {
+                            "Administrator" -> {
+                                val intent = Intent(requireContext(), AdministratorActivity::class.java)
+                                startActivity(intent)
+                                requireActivity().finish()
+                            }
+                            // Uncomment and define other roles as needed
+                            // "Material" -> {
+                            //     val intent = Intent(requireContext(), MaterialActivity::class.java)
+                            //     startActivity(intent)
+                            //     requireActivity().finish()
+                            // }
+                            // Add other roles here...
+                            else -> {
+                                Toast.makeText(requireContext(), "Role not recognized", Toast.LENGTH_SHORT).show()
                             }
                         }
-                    } else {
-                        // Masuk gagal, tampilkan pesan kesalahan
-                        val exception = task.exception
-                        if (exception is FirebaseAuthInvalidUserException || exception is FirebaseAuthInvalidCredentialsException) {
-                            // Pesan untuk email atau password salah
-                            Toast.makeText(requireContext(), "Incorrect email or password", Toast.LENGTH_SHORT).show()
-                        } else {
-                            // Pesan kesalahan lainnya
-                            Toast.makeText(requireContext(), "Please fill in all fields: ${exception?.message}", Toast.LENGTH_SHORT).show()
-                        }
+                        break
                     }
                 }
 
-        }
+                if (!userFound) {
+                    Toast.makeText(requireContext(), "Incorrect email or password", Toast.LENGTH_SHORT).show()
+                }
+            }
 
-        forgotPass.setOnClickListener{
-            findNavController().navigate(R.id.action_signInFragment_to_forgotPassFragment)
-        }
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(requireContext(), "Failed to sign in: ${error.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 }
