@@ -1,0 +1,28 @@
+<!-- item_mro.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <Spinner
+        android:id="@+id/SpinnerProduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp"/>
+
+    <EditText
+        android:id="@+id/edtQuantityProduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"/>
+
+    <Button
+        android:id="@+id/btnAddProductToMRO"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="tambah produk ke MRO"/>
+
+</LinearLayout>

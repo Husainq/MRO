@@ -7,12 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".BerandaFragment">
 
-    <include
-        android:id="@+id/header"
-        layout="@header/fragment_header_beranda"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/hasil"
-        />
+
 
     <ListView
         android:id="@+id/hasil"
@@ -22,7 +17,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/header"
         app:flow_verticalBias="0.05"/>
 
 
