@@ -86,7 +86,7 @@ class AddUserFragment : Fragment(), View.OnClickListener {
         val role = binding.edtRoleAdd.selectedItem.toString()
         val password = binding.edtPasswordAdd.text.toString().trim()
 
-        if (username.isEmpty() || email.isEmpty() || role.isEmpty() || password.isEmpty() || selectedImageUri == null) {
+        if (username.isEmpty() || email.isEmpty() || role.isEmpty() || password.isEmpty()) {
             Toast.makeText(requireContext(), "Isi data secara lengkap tidak boleh kosong", Toast.LENGTH_SHORT).show()
             return
         }
@@ -97,49 +97,56 @@ class AddUserFragment : Fragment(), View.OnClickListener {
                     val user = auth.currentUser
                     val userId = user?.uid
 
-                    val storageRef = storage.reference
-                    val profileImageRef = storageRef.child("profile_images/${UUID.randomUUID()}.jpg")
+                    if (selectedImageUri != null) {
+                        val storageRef = storage.reference
+                        val profileImageRef = storageRef.child("profile_images/${UUID.randomUUID()}/${UUID.randomUUID()}.jpg")
 
-                    selectedImageUri?.let {
-                        profileImageRef.putFile(it)
+                        profileImageRef.putFile(selectedImageUri!!)
                             .addOnSuccessListener {
                                 profileImageRef.downloadUrl.addOnSuccessListener { uri ->
                                     val imageUrl = uri.toString()
-
-                                    val database = FirebaseDatabase.getInstance()
-                                    val reference = database.getReference("User")
-
-                                    val userData = HashMap<String, Any>()
-                                    userData["email"] = email
-                                    userData["username"] = username
-                                    userData["role"] = role
-                                    userData["password"] = password
-                                    userData["profileImageUrl"] = imageUrl
-
-                                    userId?.let {
-                                        reference.child(it).setValue(userData)
-                                            .addOnSuccessListener {
-                                                Toast.makeText(requireContext(), "Pendaftaran berhasil!", Toast.LENGTH_SHORT).show()
-                                                val mngUserFragment = MngUserFragment()
-                                                val transaction: FragmentTransaction = requireFragmentManager().beginTransaction()
-                                                transaction.replace(R.id.container, mngUserFragment)
-                                                transaction.commit()
-                                            }
-                                            .addOnFailureListener { e ->
-                                                Toast.makeText(requireContext(), "Gagal menyimpan data pengguna: ${e.message}", Toast.LENGTH_SHORT).show()
-                                            }
-                                    }
+                                    saveUserToDatabase(userId, username, email, role, password, imageUrl)
                                 }
                             }
                             .addOnFailureListener { e ->
                                 Toast.makeText(requireContext(), "Gagal mengunggah gambar: ${e.message}", Toast.LENGTH_SHORT).show()
                             }
+                    } else {
+                        saveUserToDatabase(userId, username, email, role, password, null)
                     }
                 } else {
                     val exception = task.exception
                     Toast.makeText(requireContext(), "Pendaftaran gagal: ${exception?.message}", Toast.LENGTH_SHORT).show()
                 }
             }
+    }
+
+    private fun saveUserToDatabase(userId: String?, username: String, email: String, role: String, password: String, imageUrl: String?) {
+        val database = FirebaseDatabase.getInstance()
+        val reference = database.getReference("User")
+
+        val userData = HashMap<String, Any>()
+        userData["userId"] = userId ?: ""
+        userData["email"] = email
+        userData["username"] = username
+        userData["role"] = role
+        userData["password"] = password
+        userData["profileImageUri"] = imageUrl ?: ""
+
+        userId?.let {
+            // Menggunakan userId sebagai kunci untuk setiap entri pengguna
+            reference.child(it).setValue(userData)
+                .addOnSuccessListener {
+                    Toast.makeText(requireContext(), "Pendaftaran berhasil!", Toast.LENGTH_SHORT).show()
+                    val mngUserFragment = MngUserFragment()
+                    val transaction: FragmentTransaction = requireFragmentManager().beginTransaction()
+                    transaction.replace(R.id.container, mngUserFragment)
+                    transaction.commit()
+                }
+                .addOnFailureListener { e ->
+                    Toast.makeText(requireContext(), "Gagal menyimpan data pengguna: ${e.message}", Toast.LENGTH_SHORT).show()
+                }
+        }
     }
 
     companion object {

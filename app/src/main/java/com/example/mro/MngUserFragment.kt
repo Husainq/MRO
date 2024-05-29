@@ -15,17 +15,32 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import androidx.activity.result.contract.ActivityResultContracts
 
 class MngUserFragment : Fragment() {
-    lateinit var binding: FragmentMngUserBinding
+    private lateinit var binding: FragmentMngUserBinding
     private lateinit var userList: MutableList<User>
     private lateinit var ref: DatabaseReference
     private lateinit var userAdapter: UserAdapter
 
+    private val pickImageLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+        uri?.let {
+            userAdapter.updateProfilePicture(it)
+
+            // Optionally, update the user's profile picture URI in Firebase
+            val dbAnggota = FirebaseDatabase.getInstance().getReference("User")
+            val selectedUser = userAdapter.getSelectedUser()
+            selectedUser?.let {
+                it.profilePictureUri = uri.toString()
+                dbAnggota.child(it.userId).setValue(it)
+            }
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentMngUserBinding.inflate(inflater, container, false)
 
         binding.backUser.setOnClickListener {
@@ -52,7 +67,7 @@ class MngUserFragment : Fragment() {
 
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                if (isAdded) { // Pastikan Fragment terpasang sebelum menggunakan requireActivity()
+                if (isAdded) {
                     if (snapshot.exists()) {
                         userList.clear()
                         for (a in snapshot.children) {
@@ -61,11 +76,7 @@ class MngUserFragment : Fragment() {
                                 userList.add(it)
                             }
                         }
-                        userAdapter = UserAdapter(
-                            requireActivity(),
-                            R.layout.detil_user,
-                            userList
-                        )
+                        userAdapter = UserAdapter(requireActivity(), R.layout.detil_user, userList, this@MngUserFragment)
                         binding.hasilUser.adapter = userAdapter
                     }
                 }
@@ -77,20 +88,7 @@ class MngUserFragment : Fragment() {
         })
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == UserAdapter.REQUEST_CODE_PICK_IMAGE && resultCode == Activity.RESULT_OK) {
-            val selectedImageUri: Uri? = data?.data
-            if (selectedImageUri != null) {
-                userAdapter.updateProfilePicture(selectedImageUri)
-
-                // Optionally, update the user's profile picture URI in Firebase
-                val dbAnggota = FirebaseDatabase.getInstance().getReference("User")
-                userAdapter.selectedUser?.let {
-                    it.profilePictureUri = selectedImageUri.toString()
-                    dbAnggota.child(it.userId).setValue(it)
-                }
-            }
-        }
+    fun startImagePicker() {
+        pickImageLauncher.launch("image/*")
     }
 }
