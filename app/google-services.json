@@ -1,17 +1,13 @@
 {
   "project_info": {
     "project_number": "257908224774",
-<<<<<<< HEAD
     "firebase_url": "https://mro-magang-default-rtdb.asia-southeast1.firebasedatabase.app",
-=======
->>>>>>> 98c38e7a3aa61f28927d30455ced2a8286c30239
     "project_id": "mro-magang",
     "storage_bucket": "mro-magang.appspot.com"
   },
   "client": [
     {
       "client_info": {
-<<<<<<< HEAD
         "mobilesdk_app_id": "1:257908224774:android:47989cd071bdeae3d6a487",
         "android_client_info": {
           "package_name": "com.example.materialrequestorder"
@@ -31,8 +27,6 @@
     },
     {
       "client_info": {
-=======
->>>>>>> 98c38e7a3aa61f28927d30455ced2a8286c30239
         "mobilesdk_app_id": "1:257908224774:android:d4025694719a32b0d6a487",
         "android_client_info": {
           "package_name": "com.example.mro"
