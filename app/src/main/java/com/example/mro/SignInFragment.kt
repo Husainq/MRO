@@ -23,7 +23,11 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
 
         val emailEditText: EditText = view.findViewById(R.id.edt_email_signin)
         val passwordEditText: EditText = view.findViewById(R.id.edt_pass_signin)
+<<<<<<< HEAD
         val btnMasuk: AppCompatButton = view.findViewById(R.id.button_login_signin)
+=======
+        val btnMasuk: Button = view.findViewById(R.id.button_login_signin)
+>>>>>>> 98c38e7a3aa61f28927d30455ced2a8286c30239
         val forgotPass: TextView = view.findViewById(R.id.forgotpass_signin)
 
         btnMasuk.setOnClickListener {

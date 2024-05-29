@@ -86,7 +86,11 @@ class AddUserFragment : Fragment(), View.OnClickListener {
         val role = binding.edtRoleAdd.selectedItem.toString()
         val password = binding.edtPasswordAdd.text.toString().trim()
 
+<<<<<<< HEAD
         if (username.isEmpty() || email.isEmpty() || role.isEmpty() || password.isEmpty()) {
+=======
+        if (username.isEmpty() || email.isEmpty() || role.isEmpty() || password.isEmpty() || selectedImageUri == null) {
+>>>>>>> 98c38e7a3aa61f28927d30455ced2a8286c30239
             Toast.makeText(requireContext(), "Isi data secara lengkap tidak boleh kosong", Toast.LENGTH_SHORT).show()
             return
         }
@@ -97,6 +101,7 @@ class AddUserFragment : Fragment(), View.OnClickListener {
                     val user = auth.currentUser
                     val userId = user?.uid
 
+<<<<<<< HEAD
                     if (selectedImageUri != null) {
                         val storageRef = storage.reference
                         val profileImageRef = storageRef.child("profile_images/${UUID.randomUUID()}/${UUID.randomUUID()}.jpg")
@@ -106,13 +111,50 @@ class AddUserFragment : Fragment(), View.OnClickListener {
                                 profileImageRef.downloadUrl.addOnSuccessListener { uri ->
                                     val imageUrl = uri.toString()
                                     saveUserToDatabase(userId, username, email, role, password, imageUrl)
+=======
+                    val storageRef = storage.reference
+                    val profileImageRef = storageRef.child("profile_images/${UUID.randomUUID()}.jpg")
+
+                    selectedImageUri?.let {
+                        profileImageRef.putFile(it)
+                            .addOnSuccessListener {
+                                profileImageRef.downloadUrl.addOnSuccessListener { uri ->
+                                    val imageUrl = uri.toString()
+
+                                    val database = FirebaseDatabase.getInstance()
+                                    val reference = database.getReference("User")
+
+                                    val userData = HashMap<String, Any>()
+                                    userData["email"] = email
+                                    userData["username"] = username
+                                    userData["role"] = role
+                                    userData["password"] = password
+                                    userData["profileImageUrl"] = imageUrl
+
+                                    userId?.let {
+                                        reference.child(it).setValue(userData)
+                                            .addOnSuccessListener {
+                                                Toast.makeText(requireContext(), "Pendaftaran berhasil!", Toast.LENGTH_SHORT).show()
+                                                val mngUserFragment = MngUserFragment()
+                                                val transaction: FragmentTransaction = requireFragmentManager().beginTransaction()
+                                                transaction.replace(R.id.container, mngUserFragment)
+                                                transaction.commit()
+                                            }
+                                            .addOnFailureListener { e ->
+                                                Toast.makeText(requireContext(), "Gagal menyimpan data pengguna: ${e.message}", Toast.LENGTH_SHORT).show()
+                                            }
+                                    }
+>>>>>>> 98c38e7a3aa61f28927d30455ced2a8286c30239
                                 }
                             }
                             .addOnFailureListener { e ->
                                 Toast.makeText(requireContext(), "Gagal mengunggah gambar: ${e.message}", Toast.LENGTH_SHORT).show()
                             }
+<<<<<<< HEAD
                     } else {
                         saveUserToDatabase(userId, username, email, role, password, null)
+=======
+>>>>>>> 98c38e7a3aa61f28927d30455ced2a8286c30239
                     }
                 } else {
                     val exception = task.exception
@@ -121,6 +163,7 @@ class AddUserFragment : Fragment(), View.OnClickListener {
             }
     }
 
+<<<<<<< HEAD
     private fun saveUserToDatabase(userId: String?, username: String, email: String, role: String, password: String, imageUrl: String?) {
         val database = FirebaseDatabase.getInstance()
         val reference = database.getReference("User")
@@ -149,6 +192,8 @@ class AddUserFragment : Fragment(), View.OnClickListener {
         }
     }
 
+=======
+>>>>>>> 98c38e7a3aa61f28927d30455ced2a8286c30239
     companion object {
         private const val IMAGE_PICK_REQUEST = 100
     }
