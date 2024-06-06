@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,7 +18,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storage
-import java.util.UUID
 
 class AddUserFragment : Fragment(), View.OnClickListener {
 
@@ -30,10 +28,9 @@ class AddUserFragment : Fragment(), View.OnClickListener {
     private lateinit var storage: FirebaseStorage
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentAddUserBinding.inflate(inflater, container, false)
         binding.backUser.setOnClickListener {
             val mngUserFragment = MngUserFragment()
@@ -45,19 +42,6 @@ class AddUserFragment : Fragment(), View.OnClickListener {
         binding.fotoAddProfile.setOnClickListener(this)
 
         return binding.root
-    }
-
-    private fun chooseImage() {
-        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-        startActivityForResult(intent, IMAGE_PICK_REQUEST)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == IMAGE_PICK_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
-            selectedImageUri = data.data
-            binding.fotoAddProfile.setImageURI(selectedImageUri)
-        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -75,8 +59,19 @@ class AddUserFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(v: View) {
         when (v.id) {
-            R.id.foto_add_profile -> chooseImage()
+            R.id.foto_add_profile -> {
+                val intent = Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                startActivityForResult(intent, REQUEST_CODE_PICK_IMAGE)
+            }
             R.id.button_tambah_user -> registerUser()
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CODE_PICK_IMAGE && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
+            selectedImageUri = data.data
+            binding.fotoAddProfile.setImageURI(selectedImageUri)
         }
     }
 
@@ -99,7 +94,7 @@ class AddUserFragment : Fragment(), View.OnClickListener {
 
                     if (selectedImageUri != null) {
                         val storageRef = storage.reference
-                        val profileImageRef = storageRef.child("profile_images/${UUID.randomUUID()}/${UUID.randomUUID()}.jpg")
+                        val profileImageRef = storageRef.child("profile_images/$email/$email.jpg")
 
                         profileImageRef.putFile(selectedImageUri!!)
                             .addOnSuccessListener {
@@ -134,7 +129,6 @@ class AddUserFragment : Fragment(), View.OnClickListener {
         userData["profileImageUri"] = imageUrl ?: ""
 
         userId?.let {
-            // Menggunakan userId sebagai kunci untuk setiap entri pengguna
             reference.child(it).setValue(userData)
                 .addOnSuccessListener {
                     Toast.makeText(requireContext(), "Pendaftaran berhasil!", Toast.LENGTH_SHORT).show()
@@ -150,6 +144,6 @@ class AddUserFragment : Fragment(), View.OnClickListener {
     }
 
     companion object {
-        private const val IMAGE_PICK_REQUEST = 100
+        const val REQUEST_CODE_PICK_IMAGE = 100
     }
 }

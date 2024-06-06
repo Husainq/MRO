@@ -5,13 +5,7 @@ import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.Spinner
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import com.bumptech.glide.Glide
 import com.google.firebase.database.FirebaseDatabase
@@ -19,17 +13,23 @@ import com.google.firebase.database.FirebaseDatabase
 class UserAdapter(
     private val userContext: Context,
     private val layoutResId: Int,
-    private val userList: List<User>,
+    private var userList: MutableList<User>,
     private val fragment: MngUserFragment
-) : ArrayAdapter<User>(userContext, layoutResId, userList) {
+) : ArrayAdapter<User>(userContext, layoutResId, userList), Filterable {
 
-    companion object {
-        const val REQUEST_CODE_PICK_IMAGE = 100
-    }
-
+    private var originalUserList: MutableList<User> = ArrayList(userList)
+    private var filteredUserList: MutableList<User> = ArrayList(userList)
     private var selectedUser: User? = null
     private var selectedImageView: ImageView? = null
     private var newProfilePictureUri: Uri? = null
+
+    override fun getCount(): Int {
+        return filteredUserList.size
+    }
+
+    override fun getItem(position: Int): User? {
+        return filteredUserList[position]
+    }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val layoutInflater: LayoutInflater = LayoutInflater.from(userContext)
@@ -40,7 +40,7 @@ class UserAdapter(
         val o_role: TextView = view.findViewById(R.id.ou_role)
         val imgPhoto: ImageView = view.findViewById(R.id.gambar_user)
         val imgEdit: ImageView = view.findViewById(R.id.icn_edit_user)
-        val anggota = userList[position]
+        val anggota = filteredUserList[position]
 
         imgEdit.setOnClickListener {
             selectedUser = anggota
@@ -135,7 +135,35 @@ class UserAdapter(
         val alert = builder.create()
         alert.show()
     }
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val filteredList = if (constraint.isNullOrEmpty()) {
+                    originalUserList
+                } else {
+                    val filterPattern = constraint.toString().lowercase().trim()
+                    originalUserList.filter {
+                        it.username.lowercase().contains(filterPattern) ||
+                                it.email.lowercase().contains(filterPattern) ||
+                                it.role.lowercase().contains(filterPattern)
+                    }.toMutableList()
+                }
 
+                val filterResults = FilterResults()
+                filterResults.values = filteredList
+                return filterResults
+            }
+
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                filteredUserList = if (results?.values == null) {
+                    mutableListOf()
+                } else {
+                    results.values as MutableList<User>
+                }
+                notifyDataSetChanged()
+            }
+        }
+    }
     fun updateProfilePicture(uri: Uri) {
         newProfilePictureUri = uri
         selectedImageView?.let {
@@ -147,4 +175,6 @@ class UserAdapter(
     fun getSelectedUser(): User? {
         return selectedUser
     }
+    
+
 }

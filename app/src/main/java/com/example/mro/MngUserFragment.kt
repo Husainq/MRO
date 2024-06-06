@@ -1,23 +1,18 @@
+// src/main/java/com/example/mro/MngUserFragment.kt
 package com.example.mro
 
-import android.app.Activity
-import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.*
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.FragmentTransaction
 import com.example.mro.databinding.FragmentMngUserBinding
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
-import androidx.activity.result.contract.ActivityResultContracts
+import com.google.firebase.database.*
 
 class MngUserFragment : Fragment() {
+
     private lateinit var binding: FragmentMngUserBinding
     private lateinit var userList: MutableList<User>
     private lateinit var ref: DatabaseReference
@@ -56,6 +51,7 @@ class MngUserFragment : Fragment() {
             transaction.replace(R.id.container, addUserFragment)
             transaction.commit()
         }
+
         return binding.root
     }
 
@@ -84,6 +80,21 @@ class MngUserFragment : Fragment() {
 
             override fun onCancelled(error: DatabaseError) {
                 // Handle onCancelled
+            }
+        })
+
+        setupSearchView()
+    }
+
+    private fun setupSearchView() {
+        binding.searchUser.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                userAdapter.filter.filter(newText)
+                return false
             }
         })
     }

@@ -54,7 +54,7 @@ class AddProductFragment : Fragment(), View.OnClickListener {
         // Set adapter for the Spinner units
         val adapterUnits = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, units)
         adapterUnits.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        binding.edtCategoriesAdd.adapter = adapterUnits
+        binding.edtUnitAdd.adapter = adapterUnits
     }
 
     override fun onClick(v: View?) {

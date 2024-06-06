@@ -38,13 +38,17 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <SearchView
+    <androidx.appcompat.widget.SearchView
         android:id="@+id/search_product"
         android:layout_marginTop="25dp"
         android:layout_width="340dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
+        android:queryHint="Search for product . . ."
+        android:iconifiedByDefault="false"
+        android:queryBackground="@android:color/transparent"
         android:background="@drawable/border" />
+
 
     <TextView
         android:id="@+id/add_product"
