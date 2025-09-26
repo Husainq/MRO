@@ -12,4 +12,8 @@
     <color name="luarbox">#D1D1D1</color>
     <color name="profil">#3D3D3D</color>
 
+    <color name="primary">#212121</color>
+    <color name="secondary">#607588</color>
+    <color name="divider">#F0F3F7</color>
+    <color name="border">#BFC9D9</color>
 </resources>

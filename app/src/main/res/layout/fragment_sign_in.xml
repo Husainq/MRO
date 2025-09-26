@@ -71,7 +71,7 @@
             />
     </LinearLayout>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_login_signin"
         android:layout_width="350dp"
         android:layout_height="57dp"
@@ -84,8 +84,7 @@
         android:textSize="15sp"
         android:layout_marginTop="25dp"
         android:fontFamily="@font/poppinsbold"
-        android:textAllCaps="false"
-        />
+        android:textAllCaps="false" />
 
 
 </RelativeLayout>
